@@ -1,16 +1,14 @@
 import 'package:dog_test/core/constants/endpoints.dart';
 import 'package:dog_test/data/models/breeds_list_all_model.dart';
 import 'package:dog_test/data/models/image_model.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import '../../../core/api_helper/api_base_helper.dart';
 import '../../../core/constants/constants.dart';
 import 'remote_datasource.dart';
 
 class RemoteDataSourceImp implements RemoteDataSource {
   final ApiBaseHelper apiBaseHelper;
-  final DefaultCacheManager defaultCacheManager;
 
-  RemoteDataSourceImp({required this.apiBaseHelper, required this.defaultCacheManager});
+  RemoteDataSourceImp({required this.apiBaseHelper});
 
   final Map<String, String> _header = {
     'Content-Type': 'application/json',

@@ -1,6 +1,5 @@
 import 'package:dog_test/data/repositories/breeds_repository_impl.dart';
 import 'package:dog_test/domain/repositories/breeds_repository.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'core/api_helper/api_base_helper.dart';
@@ -24,13 +23,11 @@ void initializeDependencies() async {
   injector.registerLazySingleton<http.Client>(() => http.Client());
 
 
-  injector.registerLazySingleton<DefaultCacheManager>(() => DefaultCacheManager());
-
   //Api helper
   injector.registerLazySingleton<ApiBaseHelper>(() => ApiBaseHelper(client: injector()));
 
   //Api
-  injector.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(apiBaseHelper: injector(),defaultCacheManager: injector()));
+  injector.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(apiBaseHelper: injector()));
 
   //local
   injector.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImp());
